@@ -1,3 +1,7 @@
 from fastapi import APIRouter
 
-order_router = APIRouter(prefix="/auth", tags=["order"])
+order_router = APIRouter(prefix="/order", tags=["order"])
+
+@order_router.get("/",)
+async def pedidos():
+    return {"mensagem": "Acessou a rota de pedidos"}
