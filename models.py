@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, Integer, String, Boolean, Enum, Float, ForeignKey
+from sqlalchemy import create_engine, Column, Integer, String, Boolean, Float, ForeignKey
 from sqlalchemy.orm import declarative_base
 from sqlalchemy_utils import ChoiceType
 # Criar conexão com o banco de dados SQLite
@@ -28,14 +28,14 @@ class Usuario(Base):
 class Pedido(Base):
     __tablename__ = 'pedidos'
     
-    STATUS_PEDIDO = (
-        ("PENDENTE", "PENDENTE"),
-        ("CONCLUIDO", "CONCLUIDO"), 
-        ("CANCELADO", "CANCELADO")
-        )
+    # STATUS_PEDIDO = (
+    #     ("PENDENTE", "PENDENTE"),
+    #     ("CONCLUIDO", "CONCLUIDO"), 
+    #     ("CANCELADO", "CANCELADO")
+    #     )
     
     id = Column("id", Integer, primary_key=True, autoincrement=True)
-    status = Column("status", ChoiceType(STATUS_PEDIDO)) 
+    status = Column("status", String) 
     usuario_id = Column("usuario_id", Integer, ForeignKey('usuarios.id'))
     valor_total = Column("valor_total", Float)
     
